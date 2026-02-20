@@ -31,8 +31,7 @@ const Contact = () => {
   };
 
   // Fixed Google Maps embed with correct coordinates for Donaghadee Tyres
-  const mapSrc = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2312.845678901234!2d-5.5378!3d54.6412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486176f4a1234567%3A0x123456789abcdef!2sUnit%202%20Newtownards%20Rd%2C%20Donaghadee%20BT21%200PT!5e0!3m2!1sen!2suk!4v1234567890123!5m2!1sen!2suk";
-
+  const mapSrc = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1154.5371967751698!2d-5.595088676362875!3d54.63790814652323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4861774928189c7f%3A0x98cd65b16a587cc0!2sDonaghadee%20Tyres!5e0!3m2!1sen!2suk!4v1771626715651!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
   return (
     <section id="contact" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4">
