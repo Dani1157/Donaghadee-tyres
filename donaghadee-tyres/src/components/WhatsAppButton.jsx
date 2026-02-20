@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, X, Instagram, Facebook } from 'lucide-react';
+import { MessageCircle, X, Instagram, Facebook, Phone } from 'lucide-react';
 import { Button } from './ui/button';
 import { businessInfo } from '../utils/mockData';
 
 const SocialButtons = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showTooltip, setShowTooltip] = useState(true);
+  const [showPhoneTooltip, setShowPhoneTooltip] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -22,45 +23,18 @@ const SocialButtons = () => {
     };
   }, []);
 
-  const handleWhatsAppClick = () => {
-  const message = encodeURIComponent("Hi! I'd like to enquire about your tyre services.");
-  const phoneNumber = businessInfo.social.whatsapp; // 447894301849
-  
-  // Try MULTIPLE WhatsApp URL formats
-  const urls = [
-    `https://wa.me/${phoneNumber}?text=${message}`,           // Standard format
-    `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`, // API format
-    `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${message}`, // Web format
-    `whatsapp://send?phone=${phoneNumber}&text=${message}`    // App protocol
-  ];
-  
-  // Try to open with first URL
-  const win = window.open(urls[0], '_blank');
-  
-  // If it doesn't work after 1 second, try the next one
-  setTimeout(() => {
-    if (!win || win.closed || typeof win.closed === 'undefined') {
-      // Try the second URL
-      window.open(urls[1], '_blank');
-      
-      // If still no luck, show phone number
-      setTimeout(() => {
-        alert(
-          `WhatsApp not opening?\n\n` +
-          `Call us: ${businessInfo.phoneDisplay}\n` +
-          `Or open web.whatsapp.com manually`
-        );
-      }, 1000);
-    }
-  }, 500);
-};
-
+  // Instagram and Facebook handlers
   const handleInstagramClick = () => {
     window.open(businessInfo.social.instagram, '_blank');
   };
 
   const handleFacebookClick = () => {
     window.open(businessInfo.social.facebook, '_blank');
+  };
+
+  // Direct phone call
+  const handlePhoneClick = () => {
+    window.location.href = `tel:${businessInfo.phone}`;
   };
 
   if (!isVisible) return null;
@@ -77,21 +51,44 @@ const SocialButtons = () => {
             <X className="w-4 h-4" />
           </button>
           <p className="text-sm text-slate-700 font-medium pr-6">
-            💬 Connect with us on social media or WhatsApp!
+            💬 Connect with us!
           </p>
         </div>
       )}
 
-      {/* WhatsApp Button */}
+      {/* Phone Button - Direct Call */}
       <div className="relative group">
         <Button
-          onClick={handleWhatsAppClick}
+          onClick={handlePhoneClick}
           size="lg"
-          className="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 shadow-2xl hover:shadow-green-500/50 transition-all duration-300 hover:scale-110 p-0"
+          className="w-14 h-14 rounded-full bg-blue-500 hover:bg-blue-600 shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-110 p-0"
+          aria-label="Call us"
+        >
+          <Phone className="w-7 h-7 text-white" />
+        </Button>
+        <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-slate-900 text-white px-3 py-1.5 rounded-md text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+          Call {businessInfo.phoneDisplay}
+        </div>
+      </div>
+
+      {/* WhatsApp Button - FIXED VERSION */}
+      <div className="relative group">
+        <a
+          href={`https://wa.me/${businessInfo.social.whatsapp}?text=${encodeURIComponent("Hi! I'd like to enquire about your tyre services.")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 shadow-2xl hover:shadow-green-500/50 transition-all duration-300 hover:scale-110 flex items-center justify-center"
           aria-label="Contact us on WhatsApp"
+          onClick={(e) => {
+            // Fallback if link doesn't work
+            setTimeout(() => {
+              if (!document.hasFocus()) return;
+              window.open(`https://api.whatsapp.com/send?phone=${businessInfo.social.whatsapp}&text=${encodeURIComponent("Hi! I'd like to enquire about your tyre services.")}`, '_blank');
+            }, 500);
+          }}
         >
           <MessageCircle className="w-7 h-7 text-white" />
-        </Button>
+        </a>
         <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-slate-900 text-white px-3 py-1.5 rounded-md text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
           WhatsApp
         </div>
@@ -132,4 +129,3 @@ const SocialButtons = () => {
 };
 
 export default SocialButtons;
-
