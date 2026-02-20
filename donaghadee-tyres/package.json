@@ -2,7 +2,7 @@
   "name": "donaghadee-tyres",
   "version": "1.0.0",
   "private": true,
-  "homepage": " https://dani1157.github.io/Donaghadee-tyres/",
+  "homepage": "https://dani1157.github.io/donaghadee-tyres/",
   "dependencies": {
     "@radix-ui/react-select": "^2.2.6",
     "@radix-ui/react-slot": "^1.2.4",
