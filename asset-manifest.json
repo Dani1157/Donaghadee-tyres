@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/donaghadee-tyres/static/css/main.b6281413.css",
+    "main.js": "/donaghadee-tyres/static/js/main.68d19eb8.js",
+    "index.html": "/donaghadee-tyres/index.html",
+    "main.b6281413.css.map": "/donaghadee-tyres/static/css/main.b6281413.css.map",
+    "main.68d19eb8.js.map": "/donaghadee-tyres/static/js/main.68d19eb8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b6281413.css",
+    "static/js/main.68d19eb8.js"
+  ]
+}
