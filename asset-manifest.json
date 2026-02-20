@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Donaghadee-tyres/static/css/main.b6281413.css",
-    "main.js": "/Donaghadee-tyres/static/js/main.68d19eb8.js",
+    "main.css": "/Donaghadee-tyres/static/css/main.93351bad.css",
+    "main.js": "/Donaghadee-tyres/static/js/main.2b1ab098.js",
     "index.html": "/Donaghadee-tyres/index.html",
-    "main.b6281413.css.map": "/Donaghadee-tyres/static/css/main.b6281413.css.map",
-    "main.68d19eb8.js.map": "/Donaghadee-tyres/static/js/main.68d19eb8.js.map"
+    "main.93351bad.css.map": "/Donaghadee-tyres/static/css/main.93351bad.css.map",
+    "main.2b1ab098.js.map": "/Donaghadee-tyres/static/js/main.2b1ab098.js.map"
   },
   "entrypoints": [
-    "static/css/main.b6281413.css",
-    "static/js/main.68d19eb8.js"
+    "static/css/main.93351bad.css",
+    "static/js/main.2b1ab098.js"
   ]
 }
