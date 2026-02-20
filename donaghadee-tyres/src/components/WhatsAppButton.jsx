@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, X, Instagram, Facebook, Phone } from 'lucide-react';
+import { X, Instagram, Facebook, Phone } from 'lucide-react';
 import { Button } from './ui/button';
 import { businessInfo } from '../utils/mockData';
 
 const SocialButtons = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showTooltip, setShowTooltip] = useState(true);
-  const [showPhoneTooltip, setShowPhoneTooltip] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -23,7 +22,6 @@ const SocialButtons = () => {
     };
   }, []);
 
-  // Instagram and Facebook handlers
   const handleInstagramClick = () => {
     window.open(businessInfo.social.instagram, '_blank');
   };
@@ -32,7 +30,6 @@ const SocialButtons = () => {
     window.open(businessInfo.social.facebook, '_blank');
   };
 
-  // Direct phone call
   const handlePhoneClick = () => {
     window.location.href = `tel:${businessInfo.phone}`;
   };
@@ -51,12 +48,12 @@ const SocialButtons = () => {
             <X className="w-4 h-4" />
           </button>
           <p className="text-sm text-slate-700 font-medium pr-6">
-            💬 Connect with us!
+            💬 Connect with us on social media!
           </p>
         </div>
       )}
 
-      {/* Phone Button - Direct Call */}
+      {/* Phone Button */}
       <div className="relative group">
         <Button
           onClick={handlePhoneClick}
@@ -69,30 +66,6 @@ const SocialButtons = () => {
         <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-slate-900 text-white px-3 py-1.5 rounded-md text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
           Call {businessInfo.phoneDisplay}
         </div>
-      </div>
-
-      {/* WhatsApp Button - FIXED VERSION */}
-      <div className="relative group">
-        <a
-          href={`https://wa.me/${businessInfo.social.whatsapp}?text=${encodeURIComponent("Hi! I'd like to enquire about your tyre services.")}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 shadow-2xl hover:shadow-green-500/50 transition-all duration-300 hover:scale-110 flex items-center justify-center"
-          aria-label="Contact us on WhatsApp"
-          onClick={(e) => {
-            // Fallback if link doesn't work
-            setTimeout(() => {
-              if (!document.hasFocus()) return;
-              window.open(`https://api.whatsapp.com/send?phone=${businessInfo.social.whatsapp}&text=${encodeURIComponent("Hi! I'd like to enquire about your tyre services.")}`, '_blank');
-            }, 500);
-          }}
-        >
-          <MessageCircle className="w-7 h-7 text-white" />
-        </a>
-        <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-slate-900 text-white px-3 py-1.5 rounded-md text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-          WhatsApp
-        </div>
-        <div className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-20"></div>
       </div>
 
       {/* Instagram Button */}
